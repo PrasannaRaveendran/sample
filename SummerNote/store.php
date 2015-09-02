@@ -8,7 +8,7 @@ if (isset($message) && !empty($message)) {
     try {
         $conn = new PDO('mysql:host=localhost;dbname=test', $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare('INSERT INTO messages VALUES(:message)');
+        $stmt = $conn->prepare('INSERT INTO messages (message) VALUES(:message)');
         $stmt->bindParam(':message', $message);      
         $stmt->execute();
 

@@ -24,17 +24,31 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/summernote.css" />
         <script src="js/summernote.min.js"></script>
         <script type="text/javascript" src='codebase/message.js'></script>
-	<link rel="stylesheet" type="text/css" href="codebase/themes/message_default.css">
+        <link rel="stylesheet" type="text/css" href="codebase/themes/message_default.css">
         <script>
             $(document).ready(function () {
-                $('#description').summernote({
-                    height: 300
+                var msg;
+                $.ajax({
+                    url: "load.php",
+                    type: "POST",
+                    data: {
+                    },
+                    dataType: "json",
+                    success: function (msg) {
+                        console.log(msg);
+                        document.getElementById("description").value = msg;                        
+                        $('#description').summernote({
+                            height: 300
+                        });
+                    }
                 });
             });
+
             function SaveDetails() {
                 var value = document.getElementById("description").value.trim();
                 console.log(value);
                 console.log(value.trim().length);
+
                 $.ajax({
                     url: "store.php",
                     type: "POST",
@@ -43,17 +57,21 @@ and open the template in the editor.
                     },
                     dataType: "json",
                     success: function (jsonStr) {
-                        var msg=(JSON.stringify(jsonStr));
-                        console.log(msg);
-                        if (msg == "true"){
-                            dhtmlx.message("Message has been added...!")
+
+                        var msg = (JSON.stringify(jsonStr));
+                        console.log(jsonStr);
+                        if (msg == "true") {
+                            $('textarea#description').val('abbcbbbc');
+                            dhtmlx.message("Message has been added...!");
                         }
                         else
                         {
-                            dhtmlx.message({ type:"error", text:"Error: "+msg })
+                            dhtmlx.message({type: "error", text: "Error: " + msg});
                         }
-                        
-                        document.getElementById("description").value="";
+                        $('#description').summernote({
+                            height: 300
+                        });
+
                     }
                 });
             }
@@ -61,7 +79,7 @@ and open the template in the editor.
         <script>
         </script>
     </head>
-    <body>
+    <body >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -75,8 +93,7 @@ and open the template in the editor.
                                 </textarea>
                                 <div class="form-group">
 
-                                    <input type="button" class="btn btn-default" onclick="SaveDetails()
-                                                    ;" id="findDuplicatesButton" value="Submit"/>
+                                    <input type="button" class="btn btn-default" onclick="SaveDetails();" id="findDuplicatesButton" value="Submit"/>
 
                                 </div>
                             </div>
