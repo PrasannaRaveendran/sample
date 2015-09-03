@@ -24,7 +24,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= base_url(); ?>home/edit"><i class="fa fa-circle-o"></i> About us</a></li>
+                    <li><a href="<?= base_url(); ?>home/edit"><i class="fa fa-circle-o"></i>FAQ'S</a></li>
                   <!--<li><a href="#"><i class="fa fa-circle-o"></i> Contact Us</a></li>-->
                   <!--<li><a href="#"><i class="fa fa-circle-o"></i> FAQ'S</a></li>-->
                     <!--                <li>

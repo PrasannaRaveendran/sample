@@ -13,15 +13,14 @@
             <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
-
-
-
+            <script type="text/javascript" src='/dist/cms/message.js'></script>
+            <link rel="stylesheet" type="text/css" href="/dist/cms/message_default.css"></link>
             <!-- include summernote css/js-->
             <link href="/dist/cms/summer/summernote.css"  rel="stylesheet"></link>
             <script src="/dist/cms/summer/summernote.min.js"></script>
             <script>
                 $(document).ready(function () {
-                   
+
                     $('#summernote').summernote({
                         height: 200,
                     });
@@ -98,8 +97,10 @@
                             success: function (result) {
                                 console.log("successs");
                                 console.log(result);
+                                dhtmlx.message("Changes has been saved...!");
                             }
                         });
+
                     }
                 }
 
@@ -128,7 +129,7 @@
                             <div class="">
                                 <p class="container ">
                                     <textarea class="input-block-level" id="summernote" name="content" rows="18">
-                                            <?php echo $about_us; ?>
+                                        <?php echo $about_us; ?>
                                     </textarea>
                                 </p>
                             </div>
